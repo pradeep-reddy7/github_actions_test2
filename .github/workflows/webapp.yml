@@ -34,3 +34,5 @@ jobs:
       - name: Upload WAR file to EC2
         run: |
           scp -o StrictHostKeyChecking=no -o PasswordAuthentication=yes target/spring-boot-hello-world-example-0.0.1-SNAPSHOT.war testuser@52.38.254.59:/usr/local/tomcat/webapps
+          echo test1
+          
