@@ -37,5 +37,5 @@ jobs:
           host: ${{ env.EC2_HOST }}
           username: ${{ secrets.EC2_USERNAME }}
           password: ${{ secrets.EC2_PASSWORD }}
-          source: target/javawebapplication-*.war
+          source: target/spring-boot-hello-world-example-0.0.1-SNAPSHOT.war  # Adjust the source path accordingly
           target: ${{ env.EC2_DESTINATION_PATH }}
