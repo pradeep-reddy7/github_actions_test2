@@ -10,9 +10,9 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
-    env:
-      EC2_HOST: 52.38.254.59
-      EC2_DESTINATION_PATH: /usr/local/tomcat/webapps
+    #env:
+     # EC2_HOST: 52.38.254.59
+     # EC2_DESTINATION_PATH: /usr/local/tomcat/webapps
 
     steps:
       - name: Checkout Code
@@ -33,4 +33,4 @@ jobs:
 
       - name: Upload WAR file to EC2
         run: |
-          scp -o StrictHostKeyChecking=no -o PasswordAuthentication=yes target/spring-boot-hello-world-example-0.0.1-SNAPSHOT.war ${{ secrets.EC2_USERNAME }}@${{ env.EC2_HOST }}:${{ env.EC2_DESTINATION_PATH }}
+          scp -o StrictHostKeyChecking=no -o PasswordAuthentication=yes target/spring-boot-hello-world-example-0.0.1-SNAPSHOT.war testuser@52.38.254.59:/usr/local/tomcat/webapps
