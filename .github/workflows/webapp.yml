@@ -28,9 +28,6 @@ jobs:
       - name: Build with Maven
         run: mvn clean install -X
 
-      - name: Display Maven Output
-        run: cat target/build.log
-
       - name: Upload WAR file to EC2
         uses: appleboy/scp-action@v0.1.4
         with:
