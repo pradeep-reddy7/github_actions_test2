@@ -33,4 +33,4 @@ jobs:
 
       - name: Upload WAR file to EC2
         run: |
-          scp -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null target/spring-boot-hello-world-example-0.0.1-SNAPSHOT.war ${{ secrets.EC2_USERNAME }}@${{ env.EC2_HOST }}:${{ env.EC2_DESTINATION_PATH }}
+          scp -o StrictHostKeyChecking=no -o PasswordAuthentication=yes target/spring-boot-hello-world-example-0.0.1-SNAPSHOT.war ${{ secrets.EC2_USERNAME }}@${{ env.EC2_HOST }}:${{ env.EC2_DESTINATION_PATH }}
