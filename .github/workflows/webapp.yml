@@ -31,7 +31,8 @@ jobs:
       - name: List files in target directory
         run: ls -R target
 
+      - name: Install sshpass
+        run: sudo apt-get update && sudo apt-get install -y sshpass
+
       - name: Upload WAR file to EC2
-        run: |
-          echo "test1" | scp -o StrictHostKeyChecking=no -o PasswordAuthentication=yes -r target/spring-boot-hello-world-example-0.0.1-SNAPSHOT.war testuser@52.38.254.59:/usr/local/tomcat/webapps
- 
+        run: sshpass -p 'test1' scp -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -r target/spring-boot-hello-world-example-0.0.1-SNAPSHOT.war testuser@52.38.254.59:/usr/local/tomcat/webapps
