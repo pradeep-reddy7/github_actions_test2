@@ -32,11 +32,13 @@ jobs:
         run: ls -R target
 
       - name: Upload WAR file to EC2
-        uses: appleboy/scp-action@v0.1.4
+        uses: appleboy/ssh-action@v0.7.0
         with:
           host: ${{ env.EC2_HOST }}
           username: ${{ secrets.EC2_USERNAME }}
           password: ${{ secrets.EC2_PASSWORD }}
-          source: target/spring-boot-hello-world-example-0.0.1-SNAPSHOT.war  # Adjust the source path accordingly
-          target: ${{ env.EC2_DESTINATION_PATH }}
+          script: |
+            scp target/spring-boot-hello-world-example-0.0.1-SNAPSHOT.war \
+            ${{ env.EC2_USERNAME }}@${{ env.EC2_HOST }}:${{ env.EC2_DESTINATION_PATH }}
+
           debug: true
