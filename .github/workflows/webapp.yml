@@ -39,3 +39,4 @@ jobs:
           password: ${{ secrets.EC2_PASSWORD }}
           source: target/spring-boot-hello-world-example-0.0.1-SNAPSHOT.war  # Adjust the source path accordingly
           target: ${{ env.EC2_DESTINATION_PATH }}
+          debug: true
