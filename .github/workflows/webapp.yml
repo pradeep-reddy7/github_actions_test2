@@ -42,3 +42,6 @@ jobs:
 
       - name: Upload WAR file to EC2
         run: sshpass -p ${{ secrets.EC2_PASSWORD }} scp -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -r target/spring-boot-hello-world-example-0.0.1-SNAPSHOT.war ${{ secrets.EC2_USERNAME }}@${{ env.EC2_HOST }}:${{ env.EC2_DESTINATION_PATH }}
+
+      - name: Restart Tomcat
+        run: sshpass -p ${{ secrets.EC2_PASSWORD }} ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null ${{ secrets.EC2_USERNAME }}@${{ env.EC2_HOST }} "sudo /etc/init.d/tomcat restart"
